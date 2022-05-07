@@ -1,0 +1,8 @@
+html{
+    background-color: black;
+}
+
+#searchedItem:hover{
+    background-color: white;
+    color:black
+}

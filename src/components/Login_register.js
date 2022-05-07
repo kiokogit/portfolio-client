@@ -19,6 +19,7 @@ export const LoginRegister = ({ mode }) => {
         const user = {
             fname: form.fname.value,
             lname: form.lname.value,
+            username: form.username.value,
             email: form.email.value,
             password: form.password1.value
         }
@@ -37,19 +38,18 @@ export const LoginRegister = ({ mode }) => {
     async function login_user(e) {
         setError(null)
         e.preventDefault();
-        const user = { email: e.target.email.value, password: e.target.password.value }
-        const res = await login_action(user, setError)
-        if (!error && res) {
-            navigate('/user', { replace: true })
-        }
+        const user = { username:e.target.email_username.value, email: e.target.email_username.value, password: e.target.password.value }
+        await login_action(user,navigate, setError)
     }
 
     return (
-        <div>
-            <Header loggedin={false} login='/login' register='/register' />
+        <div align='center'>
+            <div  >
+                <Header loggedin={false} login='/login' register='/register' />
+                </div>
             {error && <AlertBox severity='error' message={error} />}
             {success && <AlertBox severity='success' message={success} />}
-            <div>
+            <div style={{minHeight:'550px'}}>
                 {mode === 'reg' && <RegistrationForm onsubmit={(e) => register_user(e)} />}
                 {mode === 'login' && <LoginForm onsubmit={(e) => login_user(e)} />}
             </div>

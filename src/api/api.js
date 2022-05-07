@@ -16,3 +16,8 @@ export const logout_api = () => API.post(`/user/logout`);
 
 export const all_profiles_api = () => API.get('/user/profiles/all');
 export const current_user_api = () => API.get('/user/profile/get_current');
+export const user_projects_api = () => API.get('/user/projects');
+
+export const guest_search_api = (query) => API.get(`user/search?username=${query}`);
+
+export const edit_user_cv = (body)=>API.patch('/user/profile/edit', body)

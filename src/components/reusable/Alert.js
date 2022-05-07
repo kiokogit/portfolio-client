@@ -3,7 +3,7 @@ import { Alert } from "@mui/material";
 
 export const AlertBox = ({ severity, message }) => {
     return (
-        <Alert variant='outlined' severity={severity} >
+        <Alert severity={severity} >
             {message}
         </Alert>
     )

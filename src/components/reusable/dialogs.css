@@ -1,5 +1,5 @@
 .form {
-    width:200px;
+    width:400px;
     height:fit-content;
     scrollbar-width:1px;
     border-radius: 10px;
@@ -10,14 +10,6 @@
     margin-bottom: 0;
 }
 
-.pad{
-    padding:10px;
-}
-
-.small-input{
-    width:95%;
-    scale: 0.75;
-}
 
 .small-input :invalid{
     border: red 2px;
@@ -27,16 +19,28 @@
     border: green 2px;
 }
 
+.small-input{
+    width:95%;
+    margin:10px;
+}
+
 .header{
-    position:relative;
+    position:sticky;
     margin-top: 0;
     width:100%;
     border-bottom: blue 2px;
-    background-color: blanchedalmond;
 }
 
 .header-content{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.content{
+    padding:30px;
+}
+
+.center{
+    align-self: center;
 }

@@ -1,17 +1,22 @@
-import { Paper } from '@mui/material';
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom'
-import { all_profiles_actions} from '../actions/actions_for_all';
-import { current_user_profile_action, logout_action } from '../actions/user_actions'
+import { current_user_profile_action, logout_action, user_projects_action } from '../actions/user_actions'
+import { GuestProfile, Search} from './Guest_Profile';
+import { ProfileEditingForm } from './Profile_Editing';
 import { Footer } from './reusable/Footer';
 import { Header } from './reusable/Header';
+import { ShowcaseProjects } from './ShowcaseProjects';
+import { ShowCv } from './ShowCv';
 
-import './user-home.css';
+import './userhome.css';
 
 export const UserHome = () => {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
+	const [win, setWin] = useState('cv')
+	const [searched, setSearched] = useState(false)
+	const [user, setUser] = useState(null)
   
 	//auto in
 	useEffect(() => {
@@ -19,44 +24,74 @@ export const UserHome = () => {
 	}, [dispatch])
 
 	useEffect(() => {
-		dispatch(all_profiles_actions());
+		dispatch(user_projects_action());
 	}, [dispatch]);
 
 	function logout_user(e) {
 		e.preventDefault();
-		if (logout_action(navigate)); //navigate from the action
+		logout_action(navigate); //navigate from the action
 	};
 
 	//states
 	const current_user = useSelector(state => state.user_profile);
-	const all_users = useSelector(state => state.users);
+	const searched_profiles = useSelector(state => state.guest_profile);
+
+	//Projects
+	const user_projects = useSelector(state => state.user_projects)
 
 	return (
-		<div className='all-content' >
+		<div  >
 			<div>
-				<Header loggedin={true} logout={(e) => logout_user(e)} />
+				<Header loggedin={true} logout={(e) => logout_user(e)} setWindow={setWin} setSearched={setSearched} />
 			</div>
-			<div className='main-content' >
+			{searched && <Search users={searched_profiles} setWin={setWin} setUser={setUser} setSearched={setSearched} />}
+
+			<div style={{color:'white', display: 'grid', gridTemplateColumns: '1fr 5fr 2fr', minHeight:'550px'}} >
 				<div>
-					User Details
-					<h3>@{current_user.fname}</h3>
-					<div>Social Media handles</div>
-					{current_user.facebook}
-				</div>
-				<div>
-					Feed
-				</div>
-				<div>
-					Users:
+					<h2>{current_user.username}</h2>
+					<hr/>
 					<div>
-						{all_users?.map(user =>
-							<div key={user._id}>
-								<Paper>
-									@{user.fname} - {user.email}
-								</Paper>
-							</div>
-						)}
+						<h5>Social Media</h5>
+						<hr />
+						<p><a href={current_user.gitHub} >GitHub</a></p>
+						<p><a href={current_user.facebook} >Facebook</a></p>
+						<p><a href={current_user.twitter} >Twitter</a></p>
+						<p><a href={current_user.linkedIn} >LinkedIn</a></p>
+						<p><a href={current_user.instagram} >Instagram</a></p>
 					</div>
+					<hr/>
+				</div>
+				<div>
+					{/* <ButtonGroup>
+						<Button onClick={()=>setWin('projects')} >Projects</Button>
+						<Button onClick={()=>setWin('cv')} >Show User Details</Button>
+						<Button onClick={()=>setWin('edit')} >Edit Profile</Button>
+					</ButtonGroup> */}
+					{win === 'projects' && <ShowcaseProjects projects={user_projects} />}
+					{win === 'edit' && <ProfileEditingForm user={current_user} />}
+					{win === 'cv' && <ShowCv user={current_user} projects={user_projects} />}
+					{win==='guest' && <GuestProfile user={user} projects={[]} />}
+				</div>
+				<div>
+					<div>
+						<h3>Contacts</h3>
+						<hr/>
+						<h5>Email Address: {current_user.email}</h5>
+						<h5>Phone No: {current_user.phone_number}</h5>
+					</div>
+					<div>
+						<hr/>
+						<h4>Other Profiles</h4>
+						<hr />
+						{/* {all_users?.map(user =>
+							<div key={user._id}>
+								<a href={`${user.fname}/profile`}>
+									@{user.fname}
+								</a>
+							</div>
+						)} */}
+					</div>
+					<hr/>
 				</div>
 			</div>
 			<div>

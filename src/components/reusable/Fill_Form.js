@@ -7,17 +7,18 @@ import './dialogs.css';
 export const LoginForm = ({ onsubmit }) => {
     return (
         <form className='form' onSubmit={onsubmit}>
-            <Paper >
-                <DialogTitle>
+            <Paper className='content pad' >
+            <div>Don't have an account yet? Register <a href='/register'>here</a></div>
+                <DialogTitle className='center' >
                     Login
                 </DialogTitle>
-                <DialogContent className='content pad'>
-                    <TextField className='small-input pad' id='email' label='Email' type='email' variant='outlined' required fullWidth />
-                    <TextField className = 'small-input pad' id='password' label='Password' type='password' variant='outlined' required fullWidth />
+                <DialogContent>
+                    <TextField style={{marginTop:'10px'}} id='email_username' label='Email/Username' type='text' variant='outlined' required fullWidth />
+                    <TextField style={{marginTop:'10px'}} id='password' label='Password' type='password' variant='outlined' required fullWidth />
                 </DialogContent>
                 <DialogActions>
-                    <Button type='submit' color='primary' fullWidth >Submit</Button>
-                    <Button type='reset' color='secondary' fullWidth >Cancel</Button>
+                    <Button variant='outlined' type='submit' color='primary' fullWidth >Submit</Button>
+                    <Button variant='outlined' type='reset' color='secondary' fullWidth >Clear</Button>
                 </DialogActions>
             </Paper>
         </form>
@@ -27,21 +28,23 @@ export const LoginForm = ({ onsubmit }) => {
 export const RegistrationForm = ({ onsubmit }) => {
     return (
         <form className='form' onSubmit={onsubmit} >
-            <Paper >
+            <Paper className='content pad' >
+            <div>Already have an account? Proceed to <a href='/login'>Login</a></div>
                 <DialogTitle>
                     Register as a New User
                 </DialogTitle>
-                <DialogContent className='content pad' >
+                <DialogContent >
                     <div></div>
-                    <TextField className='small-input pad' id='fname' label='First Name' variant='outlined' required fullWidth />
-                    <TextField className='small-input pad' id='lname' label='Last Name' variant='outlined' required fullWidth />
-                    <TextField className='small-input pad' id='email' label='Email' type='email' variant='outlined' required fullWidth />
-                    <TextField className='small-input pad' id='password1' label='Password' type='password' variant='outlined' required fullWidth />
-                    <TextField className='small-input pad' id='password2' label='Confirm Password' type='password' variant='outlined' required fullWidth />
+                    <TextField style={{marginTop:'10px'}} id='fname' label='First Name' variant='outlined' required fullWidth />
+                    <TextField style={{marginTop:'10px'}} id='lname' label='Last Name' variant='outlined' required fullWidth />
+                    <TextField style={{marginTop:'10px'}} id='username' label='User Name' variant='outlined' required fullWidth />
+                    <TextField style={{marginTop:'10px'}} id='email' label='Email' type='email' variant='outlined' required fullWidth />
+                    <TextField style={{marginTop:'10px'}} id='password1' label='Password' type='password' variant='outlined' required fullWidth />
+                    <TextField style={{marginTop:'10px'}} id='password2' label='Confirm Password' type='password' variant='outlined' required fullWidth />
                 </DialogContent>
                 <DialogActions>
-                    <Button type='submit' variant='filled' color='primary' fullWidth >Submit</Button>
-                    <Button type='reset' variant='outlined' color='secondary' fullWidth >Cancel</Button>
+                    <Button type='submit' variant='outlined' color='primary' fullWidth >Submit</Button>
+                    <Button type='reset' variant='outlined' color='secondary' fullWidth >Clear</Button>
                 </DialogActions>
             </Paper>
         </form>
