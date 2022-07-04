@@ -62,10 +62,19 @@ export const user_projects_action = () => async (dispatch) => {
     }
 }
 
-export const editcv = async (id) => {
+export const editcv = async (body) => {
     try {
-        await api.edit_user_cv(id);
+        await api.edit_user_cv(body);
     } catch (e) {
+        console.log(e)
+    }
+}
+
+export const add_project_action = async(project)=>{
+    try{
+        const {data} = await api.add_project_api(project);
+        console.log(data)
+    }catch(e){
         console.log(e)
     }
 }

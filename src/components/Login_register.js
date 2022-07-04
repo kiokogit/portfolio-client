@@ -4,7 +4,6 @@ import { login_action, register_action } from "../actions/user_actions.js";
 import { AlertBox } from './reusable/Alert.js';
 import { LoginForm, RegistrationForm } from './reusable/Fill_Form.js';
 import { Footer } from './reusable/Footer.js';
-import { Header } from './reusable/Header.js';
 
 
 export const LoginRegister = ({ mode }) => {
@@ -44,11 +43,10 @@ export const LoginRegister = ({ mode }) => {
 
     return (
         <div align='center'>
-            <div  >
-                <Header loggedin={false} login='/login' register='/register' />
-                </div>
+            <div style={{height:'50px'}}>
             {error && <AlertBox severity='error' message={error} />}
             {success && <AlertBox severity='success' message={success} />}
+            </div>
             <div style={{minHeight:'550px'}}>
                 {mode === 'reg' && <RegistrationForm onsubmit={(e) => register_user(e)} />}
                 {mode === 'login' && <LoginForm onsubmit={(e) => login_user(e)} />}

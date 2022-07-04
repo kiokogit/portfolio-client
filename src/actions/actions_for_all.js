@@ -14,3 +14,7 @@ export const get_guest_data = (query) =>async(dispatch)=> {
         console.log(e.response)
     }
 };
+
+export const reset_search_data = ()=>(dispatch)=>{
+    dispatch({type:'RESET_DATA'})
+};

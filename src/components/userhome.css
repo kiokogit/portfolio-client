@@ -1,8 +1,35 @@
-html{
-    background-color: black;
+
+#searchedItem{
+    padding:5px;
+    height:2rem;
+    cursor:pointer;
 }
 
 #searchedItem:hover{
     background-color: white;
     color:black
+}
+
+.search-container{
+    background-color:grey;
+    padding: 20px;
+    margin-left: 10px;
+    width: max-content;
+    max-height: 500px;
+    color: white;
+    display: inline-block;
+    position: absolute 
+}
+
+.editForm input{
+    height:1.2rem;
+    width: 300px;
+    margin:5px;
+}
+
+.editForm div{
+    width:70%;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

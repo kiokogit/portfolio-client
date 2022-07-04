@@ -4,10 +4,15 @@ export const Footer = () => {
     return (
       <div style={{backgroundColor:'black'}}>
             <hr />
-      <div style={{paddingTop:'20px', height:'150px', display:'flex', flexDirection:'row', justifyContent:'space-around', color:'white'}} >
-            <h3>Contact us</h3>
+      <div style={{paddingTop:'20px', height:'200px', display:'flex', flexDirection:'row', justifyContent:'space-around', color:'white'}} >
+                <div>
+                <p><a href='/'>Home</a></p>
+                <p><a href='/login'>Login</a></p>
+                <p><a href='/register'>Register</a></p>
+                </div>
+                <h3>Contact us</h3>
           <div>
-              Send us an Message through:
+              Send us a Message through:
               <p>Email: kiokovincent12@gmail.com</p>
               <p>Phone: +254703618918</p>
           </div>
@@ -26,7 +31,7 @@ export const Footer = () => {
                     </p>
           </div>
           <div>
-              Copyright &copy 2022
+              Copyright &copy; 2022
           </div>
             </div>
             </div>

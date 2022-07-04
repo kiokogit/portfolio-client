@@ -1,27 +1,42 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
-import { GuestProfile, Search } from './Guest_Profile.js';
+import { GuestProfile} from './Guest_Profile.js';
 import { Footer } from './reusable/Footer.js'
-import { Header } from './reusable/Header.js'
+import { GuestHeader, SearchHeader } from './reusable/Header.js'
+import { ShowCv } from './ShowCv.js';
 
 export const Home = () => {
 
 	const [win, setWin] = useState('landing');
 	const [user, setUser] = useState(null);
-	const [searched, setSearched] = useState(false);
 
-	const searched_profiles = useSelector(state => state.guest_profile)
+	const users = useSelector(state => state.guest_profile)
 
 	return (
-		<div style={{backgroundColor:'black'}}>
-			<div  >
-				<Header loggedin={false} login='/login' register='/register' setSearched={setSearched} setWindow={setWin} />
+		<div>
+			<GuestHeader />
+			<div>
+				<div>
+				<SearchHeader  />
+				</div>
+				{users?.length < 1 ? '' : <div>
+        <p>{users.length} profile(s) matched</p>
+        <hr/>
+        {users?.map(user => (
+          <div id='searchedItem' onClick={e => {
+            setUser(user)
+            setWin('guest')
+            document.getElementById('search').value = user.fname + ' ' + user.lname
+          }}><div>{user.fname} {user.lname}</div>
+            <small>{user.username}</small>
+          </div>
+        ))}
+      </div> }
 			</div>
-			{searched && <Search users={searched_profiles} setWin={setWin} setUser={setUser} setSearched={setSearched} />}
-			<div align='center' style={{ backgroundColor: 'black', color: 'white', minHeight: '700px' }} >
+			<div align='center' style={{minHeight: '700px' }} >
 				<div>
 					{win === 'landing' && <Landing />}
-					{win === 'guest' && <GuestProfile user={user} />}
+					{win === 'guest' && <ShowCv user={user} />}
 				</div>
 			</div>
 			<Footer />
@@ -32,16 +47,16 @@ export const Home = () => {
 const Landing = () => {
 	return (
 		<div>
-			<div style={{ paddingTop: '350px', height: '1000px' }}>
+			<div>
 				Hi there, Welcome to your best Portfolio site
 			</div>
-			<div style={{ paddingTop: '500px', backgroundColor: 'grey', height: '1000px' }} >
+			<div  >
 				And search for more colleagues here
 			</div>
-			<div style={{ paddingTop: '500px', backgroundColor: 'black', height: '1000px' }} >
+			<div  >
 				Get Noticed
 			</div>
-			<div style={{ paddingTop: '500px', backgroundColor: 'grey', height: '1000px' }}>
+			<div >
 				Refer your employer to your work here
 			</div>
 		</div>

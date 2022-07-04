@@ -1,11 +1,10 @@
 import React from 'react'
-import { Alert } from "@mui/material";
 
 export const AlertBox = ({ severity, message }) => {
     return (
-        <Alert severity={severity} >
+        <div style={{width:'375px', scale:0.7}} severity={severity} >
             {message}
-        </Alert>
+        </div>
     )
 };
 
