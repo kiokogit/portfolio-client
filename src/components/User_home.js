@@ -40,8 +40,7 @@ export const UserHome = () => {
 	}
 
 	function handleEditing(e, body){
-		editcv(body);
-		dispatch(current_user_profile_action());
+		dispatch(editcv(body));
 		setWin('cv')
 	}
 

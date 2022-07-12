@@ -62,9 +62,10 @@ export const user_projects_action = () => async (dispatch) => {
     }
 }
 
-export const editcv = async (body) => {
+export const editcv = (body) =>async(dispatch) =>{
     try {
-        await api.edit_user_cv(body);
+        const data = await api.edit_user_cv(body);
+        dispatch({ type: 'CURRENT_PROFILE', payload: data });
     } catch (e) {
         console.log(e)
     }

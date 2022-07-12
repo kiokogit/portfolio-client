@@ -44,9 +44,9 @@ export const LoggedInHeader = ({ logout, setWindow, setSearched }) => {
 export const GuestHeader = () => {
     return (
         <div style={{height:'50px'}}>
-            <button><a href='/'>Home</a></button>
-            <button><a href='/login'>Login</a></button>
-            <button><a href='/register'>Register</a></button>
+            <a href='/'>Home</a>
+            <a href='/login'>Login</a>
+            <a href='/register'>Register</a>
         </div>
     )
 }

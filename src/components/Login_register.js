@@ -26,7 +26,7 @@ export const LoginRegister = ({ mode }) => {
             const res = await register_action(user, setError, setSuccess);
             if (res) {
                 setTimeout(() => {
-                    navigate('/login', { replace: true });
+                    navigate('/user', { replace: true });
                 }, 2000);
             }
         } else {
