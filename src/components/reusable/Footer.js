@@ -26,7 +26,7 @@ export const Footer = () => {
                             <textarea placeholder='Type Your message' />
                         </div>
                         <div>
-                            <button>Submit</button>   
+                            <button className='fwrdbtn' >Submit</button>   
                             </div>    
                     </p>
           </div>

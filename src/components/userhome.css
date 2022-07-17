@@ -6,8 +6,7 @@
 }
 
 #searchedItem:hover{
-    background-color: white;
-    color:black
+    background-color: rgb(214, 210, 210);
 }
 
 .search-container{

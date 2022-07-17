@@ -41,28 +41,15 @@
     justify-items: right;
 }
 
-.profile-pic img{
-    width:200px;
-    height:200px;
+.accountpic{
+    width:50px;
+    height:50px;
     border-radius: 50%;
-    border:groove 2px rgb(173, 48, 48);
-    transition:ease-in;
-    transition-duration: 300ms;
-    transition-delay: 300ms;
-}
-
-.profile-pic img:hover{
-    width:450px;
-    height:450px;
-    border-radius: 10px;
-    transition:ease-in;
-    transition-duration: 200ms;
-    transition-delay: 300ms;
-    border:none;
+    border:groove 2px green;
 }
 
 .project-container{
-    margin-top: 50px;
+    margin-top: 10px;
     text-align: left;
 }
 
@@ -70,11 +57,10 @@
     display:flex;
     flex-direction: row;
     justify-content: space-between;
-    margin:50px;
-    padding:20px;
+    margin:1px;
     border: 2px white solid;
     border-radius: 10px;
-    max-width: 90%;
+    max-width: fit-content;
 }
 
 .project-item{
@@ -90,10 +76,19 @@
     width:100px;
     height:75px;
     color: rgb(0, 0, 0);
-
 }
 
 .cv-show{
     margin-bottom: 1px;
-    
+}
+
+.project-details img{
+    width:250px;
+    height:175px
+}
+
+.flexcolumn {
+    display:flex;
+    flex-direction: column;
+    justify-content: left;
 }

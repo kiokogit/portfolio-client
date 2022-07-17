@@ -1,8 +1,8 @@
 
-export const Error = (code)=>{
+export const Error = ({code})=>{
 
     return (
-        <div>
+        <div className="centerall">
             {code===404 && <NotFoundError />}
         </div>
     )

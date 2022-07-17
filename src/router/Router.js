@@ -6,6 +6,7 @@ import { Error } from '../components/reusable/Error'
 
 
 export function AppRouter() {
+
     return (
         <Router>
             <Routes>
@@ -13,8 +14,7 @@ export function AppRouter() {
                 <Route path='/login' element={<LoginRegister mode='login' />} />
                 <Route path='/' element={<Home />} />
                 <Route path='/user' element={<UserHome />} />
-                
-                <Route path='*' element={<Error />} />
+                <Route path='*' element={<Error code={404} />} />
             </Routes>
         </Router>
     )

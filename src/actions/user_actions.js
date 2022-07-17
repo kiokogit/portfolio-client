@@ -3,8 +3,8 @@ import * as api from '../api/api';
 export const login_action = async(user,navigate, setError)=> {
     try {
 
-        const { data } = await api.login_api(user);
-        localStorage.setItem('token', data.token);
+        await api.login_api(user);
+        //token not sent as a payload, but as a header
         setError(null)
         navigate(`/user`, {replace:true})
         return true
@@ -62,20 +62,57 @@ export const user_projects_action = () => async (dispatch) => {
     }
 }
 
-export const editcv = (body) =>async(dispatch) =>{
+export const user_projects_in_brief_action = () => async (dispatch) => {
     try {
-        const data = await api.edit_user_cv(body);
-        dispatch({ type: 'CURRENT_PROFILE', payload: data });
+        
+        const { data } = await api.user_projects_in_brief();
+        dispatch({ type: 'USER_PROJECTS_BRIEF', payload: data });
+
     } catch (e) {
         console.log(e)
     }
 }
 
-export const add_project_action = async(project)=>{
+export const get_one_project_details_action = (id) => async(dispatch) =>{
+    try{
+
+        const {data} = await api.get_one_project_details_api(id)
+        dispatch({type:'PROJECT_DETAILS', payload:data})
+        
+    }catch(e){
+
+    }
+}
+
+export const editcv = async(body, setError, setSuccess) =>{
+    try {
+        const {data} = await api.edit_user_cv(body);
+        setSuccess(data)
+        return true
+    } catch (e) {
+        setError(e.response.data)
+        return false
+    }
+}
+
+export const add_project_action = async(project, setError, setSuccess)=>{
     try{
         const {data} = await api.add_project_api(project);
-        console.log(data)
+        setSuccess(data)
+        return true
     }catch(e){
-        console.log(e)
+        setError(e.response.data)
+        return false
+    }
+}
+
+export const edit_project_action = async(project, setError, setSuccess)=>{
+    try{
+        const {data} = await api.edit_project_api(project);
+        setSuccess(data)
+        return true
+    }catch(e){
+        setError(e.response.data)
+        return false
     }
 }
