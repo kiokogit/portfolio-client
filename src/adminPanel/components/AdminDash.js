@@ -1,6 +1,7 @@
 
-export const AdminLogin = ()=>{
-    const users = fetch('http://localhost:5000/users/').data
+export const AdminLogin = async()=>{
+    let users=['Smoke','Mwangi']
+
     return(
         <div>
             <table>
@@ -10,7 +11,7 @@ export const AdminLogin = ()=>{
                 <tbody>
                     {users.map(user =>
                         <tr>
-                            {user.fname}
+                            {user}
                         </tr>
                     )}
                 </tbody>

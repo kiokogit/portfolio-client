@@ -221,3 +221,16 @@ input:valid{
     overflow-x: hidden;
     scrollbar-width: 2px;
 }
+.linkbtn {
+    border: 2px grey;
+    border-radius: 4px;
+    background-color: blue;
+    color: white;
+    margin-top:10px;
+}
+.linkbtn:hover{
+    background-color: rgb(8, 8, 122);
+}
+.margin-top{
+    margin-top:50px
+}

@@ -18,6 +18,7 @@ API.interceptors.response.use(res => {
     return res
 })
 
+
 export const login_api = (user) => API.post(`/user/login`, user);
 export const register_api = (user) => API.post(`/user/register`, user);
 export const logout_api = () => API.post(`/user/logout`);

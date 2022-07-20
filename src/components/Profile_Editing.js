@@ -47,7 +47,7 @@ export const ProfileEditingForm = ({ user, handleEditing }) => {
         <input id='gitHub' label='GitHub Profile' value={body.gitHub} onChange={e=>setBody({...body, gitHub:e.target.value})}  /></div>
         <div><label>Would you like to submit the edited form?</label>
         <button className='cancelbtn' type='reset'>Cancel Changes</button> 
-        <button className='fwrdbtn' type='submit'>Submit Changes</button> 
+        <button className='fwrdbtn' type='submit' hidden={body===user? true:false} >Submit Changes</button> 
         </div>
           </form>
     </div>
