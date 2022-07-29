@@ -47,7 +47,6 @@ export const Home = () => {
 					{win === 'guest' && <ShowCv user={user} />}
 				</div>
 			</div>
-			<Footer />
 		</div>
 	)
 };

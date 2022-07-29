@@ -1,5 +1,5 @@
 
-export const AdminLogin = async()=>{
+export const AdminLogin = ()=>{
     let users=['Smoke','Mwangi']
 
     return(

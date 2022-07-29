@@ -4,6 +4,11 @@ import FileBase64 from 'react-file-base64'
 export const ProfileEditingForm = ({ user, handleEditing }) => {
   const [body, setBody] = useState(user)
 
+  //document title
+  React.useEffect(()=>{
+    document.title='Edit Profile'
+  }, [user])
+
   return (
       <div>
       <form className='editForm' onSubmit={(e)=>handleEditing(e, body)} >

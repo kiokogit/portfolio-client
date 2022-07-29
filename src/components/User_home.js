@@ -27,6 +27,7 @@ export const UserHome = () => {
 	const [showmore, setShowmore] = useState(false)
 	const [loading, setLoading] = useState(false)
 
+
 	//auto in
 	useEffect(() => {
 		dispatch(current_user_profile_action()); 
@@ -204,9 +205,6 @@ export const UserHome = () => {
 						</div>
 					)}
 				</div>
-			</div>
-			<div>
-				<Footer />
 			</div>
 		</div>
 	);

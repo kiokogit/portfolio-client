@@ -6,11 +6,16 @@ export const ProjectAddForm = ({add_project, setWin, projectDetails, edit_projec
 
     const [project, setProject] = React.useState(projectDetails)
 
+    //document title
+    React.useEffect(()=>{
+        document.title = projectDetails?.title? 'Editing Project':'New Project'
+    }, [projectDetails])
+
     return(
         <div>
             <div>
                 <h3>
-                    Add A Project
+                    {projectDetails?.title? 'Edit Project Details':'Add a New Project'}
                 </h3>
             </div>
             <div>

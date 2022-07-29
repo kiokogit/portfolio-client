@@ -2,6 +2,9 @@ import React from 'react'
 
 export const ShowCv = ({user, projects, getDetails, setShowmore, get_all_user_projects}) => {
 
+  React.useEffect(()=>{
+    document.title=`${user.fname}'s profile`
+  }, [user])
   //show thumbnails of projects upto three projects; 
   return (
     <div align='left'>

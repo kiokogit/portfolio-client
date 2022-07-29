@@ -1,12 +1,12 @@
 import * as api from '../api/api';
 
-export const login_action = async(user,navigate, setError)=> {
+export const login_action = async(user,navigate, setError, firstTime)=> {
     try {
 
         await api.login_api(user);
         //token not sent as a payload, but as a header
         setError(null)
-        navigate(`/user`, {replace:true})
+        navigate(`${firstTime? '/user/new': '/user'}`, {replace:true})
         return true
         
     } catch (e) {
